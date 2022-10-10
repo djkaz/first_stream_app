@@ -39,6 +39,7 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 #output it the screen as a table
 #streamlit.dataframe(fruityvice_normalized)
 
-#
+#snowflake connector
+import snowflake.connector
 
 
