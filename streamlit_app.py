@@ -56,19 +56,50 @@ import snowflake.connector
 
 ###test streamlit
 
-import streamlit as st
+import snowflake.connector
 
-# Everything is accessible via the st.secrets dict:
+ 
+print("Connecting...")
 
-st.write("DB username:", st.secrets["user"])
-st.write("DB password:", st.secrets["password"])
-st.write("My cool secrets:", st.secrets["my_cool_secrets"]["things_i_like"])
+con = snowflake.connector.connect(
 
-# And the root-level secrets are also accessible as environment variables:
+ user="alextiron",
 
-import os
+ password="Ax#l198901",
 
-st.write(
-    "Has environment variables been set:",
-    os.environ["user"] == st.secrets["user"],
+ account="ie64300.eu-west-1.aws",
+ warehouse="COMPUTE_WH",
+ database="SNOWFLAKE_SAMPLE_DATA",
+ schema="PUBLIC"
+
 )
+
+ 
+
+print(con)
+
+
+
+con.cursor().execute("USE WAREHOUSE " + WAREHOUSE)
+con.cursor().execute("USE DATABASE " + DATABASE)
+
+ 
+
+try:
+
+  result = con.cursor().execute("Select * from REGION")
+
+  result_list = result.fetchall()
+
+  print(result_list)
+
+ 
+
+finally:
+
+con.cursor().close()
+con.cursor().close()
+
+ 
+
+GENERAL DISCUSSION
