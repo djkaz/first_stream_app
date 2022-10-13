@@ -42,14 +42,33 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 #snowflake connector
 import snowflake.connector
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
+#my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+#my_cur = my_cnx.cursor()
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 #my_data_row = my_cur.fetchone()
 #streamlit.text("Hello from Snowflake:")
 #streamlit.text(my_data_row) 
-my_cur.execute("select * from fruit_load_list")
-my_data_row = my_cur.fetchone()
-my_cur.execute("The fruit load list contains:")
-streamlit.text(my_data_row)
+#my_cur.execute("select * from fruit_load_list")
+#my_data_row = my_cur.fetchone()
+#my_cur.execute("The fruit load list contains:")
+#streamlit.text(my_data_row)
 
+
+###test streamlit
+
+import streamlit as st
+
+# Everything is accessible via the st.secrets dict:
+
+st.write("DB username:", st.secrets["db_username"])
+st.write("DB password:", st.secrets["db_password"])
+st.write("My cool secrets:", st.secrets["my_cool_secrets"]["things_i_like"])
+
+# And the root-level secrets are also accessible as environment variables:
+
+import os
+
+st.write(
+    "Has environment variables been set:",
+    os.environ["db_username"] == st.secrets["db_username"],
+)
