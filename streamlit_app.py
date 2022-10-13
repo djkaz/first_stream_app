@@ -57,49 +57,31 @@ import snowflake.connector
 ###test streamlit
 
 import snowflake.connector
-
  
 print("Connecting...")
 
 con = snowflake.connector.connect(
-
  user="alextiron",
-
  password="Ax#l198901",
-
  account="ie64300.eu-west-1.aws",
  warehouse="COMPUTE_WH",
  database="SNOWFLAKE_SAMPLE_DATA",
  schema="PUBLIC"
 
 )
-
- 
-
 print(con)
-
-
-
 con.cursor().execute("USE WAREHOUSE " + WAREHOUSE)
 con.cursor().execute("USE DATABASE " + DATABASE)
-
- 
 
 try:
 
   result = con.cursor().execute("Select * from REGION")
-
   result_list = result.fetchall()
-
   print(result_list)
-
- 
 
 finally:
 
 con.cursor().close()
 con.cursor().close()
 
- 
 
-GENERAL DISCUSSION
